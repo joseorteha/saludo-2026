@@ -8,7 +8,7 @@ export const getNamesFromUrl = (): Names => {
   const urlParams = new URLSearchParams(window.location.search);
   return {
     recipient: urlParams.get('name') || urlParams.get('n') || 'Amig@',
-    sender: urlParams.get('author') || urlParams.get('a') || 'Jose B Tlehuactle Ortega',
+    sender: urlParams.get('author') || urlParams.get('a') || 'Jose',
     template: urlParams.get('template') || urlParams.get('t') || 'default'
   };
 };
