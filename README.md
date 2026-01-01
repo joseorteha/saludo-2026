@@ -239,17 +239,6 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 ---
 
-## ⭐ Agradecimientos
-
-- Código base inspirado en el proyecto de [Alejandro Bolaño](https://github.com/alejandrobolano/New-Year)
-- Iconos por [Lucide Icons](https://lucide.dev/)
-- Animaciones por [Framer Motion](https://www.framer.com/motion/)
-- Imágenes de [Unsplash](https://unsplash.com/)
-
----
-
-<div align="center">
-
 **¡Dale una ⭐ si este proyecto te ayudó!**
 
 © 2026 Jose Ortega. Todos los derechos reservados.
