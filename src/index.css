@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Animación de caída para confeti */
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-fall {
+  animation: fall linear infinite;
+}
+
+/* Animación de rebote suave */
+@keyframes bounce-slight {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-bounce-slight {
+  animation: bounce-slight 2s ease-in-out infinite;
+}
+
+/* Animación del año volando */
+@keyframes fly-year {
+  0% {
+    transform: translateX(100vw) rotate(-5deg);
+    opacity: 0.7;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(50vw) rotate(5deg);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%) rotate(-5deg);
+    opacity: 0.7;
+  }
+}
+
+.animate-fly-year {
+  animation: fly-year 15s linear infinite;
+}
+
+/* Animación fade in */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
+}
+
+/* Contenedor responsivo */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 640px) {
+  .animate-fall {
+    font-size: 1.25rem;
+  }
+}
+
+/* Mejoras visuales */
+.shadow-3xl {
+  box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
+}
