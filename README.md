@@ -11,7 +11,7 @@
 [![Vite](https://img.shields.io/badge/Vite-5.4.2-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4.1-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-[Ver Demo en Vivo](https://jose-ortega-dev.netlify.app/) • [Reportar Bug](https://github.com/joseorteha/saludo-2026/issues) • [Solicitar Función](https://github.com/joseorteha/saludo-2026/issues)
+[Ver Demo en Vivo](https://saludo-2026.vercel.app/) • [Reportar Bug](https://github.com/joseorteha/saludo-2026/issues) • [Solicitar Función](https://github.com/joseorteha/saludo-2026/issues)
 
 </div>
 
