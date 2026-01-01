@@ -30,19 +30,6 @@
 
 ---
 
-## 🎬 Demo
-
-### Vista Principal
-![Demo Principal](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzBkNzE4ZWQ0NjI4Mjk2ZGE3ZjVlNjA5MDI2ZmQ1OTEyNDYwZTM5YiZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/26tPplGWjN0xLybiU/giphy.gif)
-
-### Formulario de Personalización
-![Formulario](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGY4YjRlMzg0OWI5ZWVlYTg5ZGJiZmQ3YmI5ZjVkYjQ5ZWI2ZjM1ZSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/l0HlHJGHe3yAMhdQY/giphy.gif)
-
-### Reproductor de Música
-![Música](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWI3ZjI2YzE5YWJlZjA1ZjE5ZjU5MmE4ZjE5YzI5MzY5YzA4YTBjZCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/xUPGcEw56dJj3fJFJe/giphy.gif)
-
----
-
 ## 🚀 Inicio Rápido
 
 ### Requisitos Previos
