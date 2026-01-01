@@ -80,7 +80,7 @@ export const ShareForm: React.FC = () => {
         transition={{ duration: 0.5 }}
       >
         <Card className="border-none shadow-2xl bg-gradient-to-br from-white to-slate-50 backdrop-blur">
-          <CardHeader className="space-y-3 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white rounded-t-xl">
+          <CardHeader className="space-y-3 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white rounded-t-xl">
             <div className="flex items-center justify-between">
               <CardTitle className="text-xl md:text-2xl flex items-center gap-2">
                 <Sparkles className="w-6 h-6" />
