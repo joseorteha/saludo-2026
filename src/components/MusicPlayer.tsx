@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Music, X } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Music, X, Volume2, VolumeX } from 'lucide-react';
 
 // ========================================
 // CONFIGURACIÓN DE MÚSICA
@@ -14,8 +14,8 @@ import { Music, X } from 'lucide-react';
 
 // ELIGE UNO:
 const MUSIC_CONFIG = {
-  type: 'spotify', // Configurado para Spotify
-  youtubeId: 'dQw4w9WgXcQ', // 🎵 Reemplaza con tu video de YouTube
+  type: 'youtube', // Configurado para YouTube
+  youtubeId: 'uSD4vsh1zDA', // 🎵 Video configurado
   spotifyId: '1JEsBoCgrdy4Xmu2E6aSj7', // 🎵 Canción configurada
 };
 // ========================================
@@ -23,15 +23,29 @@ const MUSIC_CONFIG = {
 export const MusicPlayer: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showPrompt, setShowPrompt] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const handleOpen = () => {
     setIsOpen(true);
     setShowPrompt(false);
+    setIsPlaying(true);
+  };
+
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+  };
+
+  const stopMusic = () => {
+    setIsPlaying(false);
+    setIsOpen(false);
   };
 
   const getEmbedUrl = () => {
     if (MUSIC_CONFIG.type === 'youtube') {
-      return `https://www.youtube.com/embed/${MUSIC_CONFIG.youtubeId}?autoplay=1&loop=1&playlist=${MUSIC_CONFIG.youtubeId}`;
+      const muteParam = isMuted ? '&mute=1' : '&mute=0';
+      return `https://www.youtube.com/embed/${MUSIC_CONFIG.youtubeId}?autoplay=1&loop=1&playlist=${MUSIC_CONFIG.youtubeId}${muteParam}`;
     } else {
       return `https://open.spotify.com/embed/track/${MUSIC_CONFIG.spotifyId}?utm_source=generator&theme=0`;
     }
@@ -48,42 +62,76 @@ export const MusicPlayer: React.FC = () => {
       )}
       
       <div className="fixed bottom-20 sm:bottom-4 right-4 z-40 flex flex-col gap-2 items-end">
-        {!isOpen ? (
+        {!isPlaying ? (
           <button
             onClick={handleOpen}
             className="bg-white/90 backdrop-blur-md p-3 sm:p-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 group"
             aria-label="Abrir reproductor de música"
           >
-            <Music className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-600 group-hover:text-purple-600 transition-colors animate-pulse" />
+            <Music className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 group-hover:text-purple-600 transition-colors animate-pulse" />
           </button>
         ) : (
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden border border-gray-200 max-w-[calc(100vw-2rem)] sm:max-w-none">
-            <div className="flex items-center justify-between p-2 sm:p-3 bg-gradient-to-r from-indigo-600 to-purple-600">
-              <div className="flex items-center gap-2">
-                <Music className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                <span className="text-white font-semibold text-xs sm:text-sm">
-                  {MUSIC_CONFIG.type === 'youtube' ? '🎬 YouTube' : '🎧 Spotify'}
-                </span>
-              </div>
+          <>
+            <div className="flex gap-2">
               <button
-                onClick={() => setIsOpen(false)}
-                className="text-white hover:text-gray-200 transition-colors"
-                aria-label="Cerrar reproductor"
+                onClick={toggleMute}
+                className="bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110"
+                aria-label={isMuted ? "Activar sonido" : "Silenciar"}
               >
-                <X className="w-4 h-4 sm:w-5 sm:h-5" />
+                {isMuted ? (
+                  <VolumeX className="w-5 h-5 sm:w-6 sm:h-6 text-red-600" />
+                ) : (
+                  <Volume2 className="w-5 h-5 sm:w-6 sm:h-6 text-green-600 animate-pulse" />
+                )}
               </button>
+              <button
+                onClick={stopMusic}
+                className="bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110"
+                aria-label="Detener música"
+              >
+                <X className="w-5 h-5 sm:w-6 sm:h-6 text-red-600" />
+              </button>
+              {!isOpen && (
+                <button
+                  onClick={() => setIsOpen(true)}
+                  className="bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110"
+                  aria-label="Mostrar reproductor"
+                >
+                  <Music className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
+                </button>
+              )}
             </div>
-            <iframe
-              width="280"
-              height={MUSIC_CONFIG.type === 'youtube' ? '158' : '152'}
-              src={getEmbedUrl()}
-              title="Music Player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full"
-            />
-          </div>
+
+            <div className={`bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden border border-gray-200 max-w-[calc(100vw-2rem)] sm:max-w-none transition-all duration-300 ${isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none h-0'}`}>
+              <div className="flex items-center justify-between p-2 sm:p-3 bg-gradient-to-r from-blue-600 to-purple-600">
+                <div className="flex items-center gap-2">
+                  <Music className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                  <span className="text-white font-semibold text-xs sm:text-sm">
+                    {MUSIC_CONFIG.type === 'youtube' ? '🎬 YouTube' : '🎧 Spotify'}
+                  </span>
+                </div>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="text-white hover:text-gray-200 transition-colors"
+                  aria-label="Minimizar reproductor"
+                >
+                  <X className="w-4 h-4 sm:w-5 sm:h-5" />
+                </button>
+              </div>
+              <iframe
+                ref={iframeRef}
+                key={isMuted ? 'muted' : 'unmuted'}
+                width="280"
+                height={MUSIC_CONFIG.type === 'youtube' ? '158' : '152'}
+                src={getEmbedUrl()}
+                title="Music Player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full"
+              />
+            </div>
+          </>
         )}
       </div>
     </>
