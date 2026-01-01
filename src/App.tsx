@@ -24,20 +24,32 @@ function App() {
         <Route
           path="/*"
           element={
-            <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-orange-50 to-amber-50 flex flex-col p-4 relative overflow-hidden">
+            <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50 flex flex-col relative overflow-hidden">
               <Confetti />
               <MusicPlayer />
-              <div className="container mx-auto max-w-4xl px-4 py-8 md:py-12 relative z-10">
-                <div className="bg-white/90 backdrop-blur-lg p-6 md:p-10 rounded-2xl shadow-2xl relative border border-white/50 hover:shadow-3xl transition-shadow duration-300">
-                  <NewYearGreeting
-                    recipient={names.recipient}
-                    sender={names.sender}
-                  />
+              
+              {/* Main Content */}
+              <div className="flex-1 flex flex-col items-center justify-start pt-4 sm:pt-8 md:pt-12 pb-4">
+                <div className="container mx-auto max-w-5xl px-3 sm:px-4 md:px-6">
+                  <div className="bg-white/60 backdrop-blur-xl p-4 sm:p-6 md:p-10 lg:p-12 rounded-3xl shadow-2xl relative border border-white/80 hover:shadow-3xl transition-all duration-300">
+                    <NewYearGreeting
+                      recipient={names.recipient}
+                      sender={names.sender}
+                      template={names.template}
+                    />
+                  </div>
                 </div>
               </div>
-              <ShareForm />
+
+              {/* Share Form */}
+              <div className="pb-24 sm:pb-28 md:pb-32">
+                <ShareForm />
+              </div>
+              
               <YearAnimation />
-              <div className="text-center mt-8 relative z-10">
+              
+              {/* Footer */}
+              <div className="relative z-10 pb-4">
                 <Footer />
               </div>
             </div>

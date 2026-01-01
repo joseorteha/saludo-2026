@@ -10,7 +10,7 @@ export const YearAnimation: React.FC = () => {
         <div className="relative w-full h-full">
           {/* Year with trailing effect */}
           <div className="absolute inset-0 font-bold text-6xl md:text-8xl lg:text-9xl 
-                        bg-gradient-to-r from-cyan-600 via-orange-500 to-amber-500 
+                        bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 
                         bg-clip-text text-transparent filter drop-shadow-lg">
             {currentYear}
             <span className="absolute -left-4 -top-2 opacity-30">{currentYear}</span>

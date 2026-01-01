@@ -114,3 +114,42 @@
 .shadow-3xl {
   box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
 }
+
+/* Optimizaciones para móvil */
+@media (max-width: 640px) {
+  .animate-fall {
+    font-size: 1.25rem;
+  }
+  
+  /* Reducir animaciones en móvil para mejor performance */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fall,
+    .animate-bounce-slight,
+    .animate-fly-year,
+    .animate-fade-in {
+      animation: none !important;
+    }
+  }
+}
+
+/* Mejoras de rendimiento para animaciones */
+@media (hover: hover) and (pointer: fine) {
+  /* Animaciones más suaves solo en desktop */
+  button:hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Touch-friendly para móviles */
+@media (hover: none) and (pointer: coarse) {
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
